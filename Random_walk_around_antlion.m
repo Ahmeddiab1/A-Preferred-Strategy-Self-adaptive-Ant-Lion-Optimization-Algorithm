@@ -1,13 +1,13 @@
 
-% This function creates random walks Õâ¸öº¯Êý´´½¨Ëæ»úÓÎ¶¯
+% This function creates random walks 
 
 function [RWs]=Random_walk_around_antlion(Dim,max_iter,lb, ub,antlion,current_iter)
-if size(lb,1) ==1 && size(lb,2)==1 %Check if the bounds are scalar ¼ì²é±ß½çÊÇ·ñÊÇ±êÁ¿
+if size(lb,1) ==1 && size(lb,2)==1 %Check if the bounds are scalar 
     lb=ones(1,Dim)*lb;
     ub=ones(1,Dim)*ub;
 end
 
-if size(lb,1) > size(lb,2) %Check if boundary vectors are horizontal or vertical ¼ì²é±ß½çÏòÁ¿ÊÇË®Æ½µÄ»¹ÊÇ´¹Ö±µÄ
+if size(lb,1) > size(lb,2) %Check if boundary vectors are horizontal or vertical 
     lb=lb';
     ub=ub';
 end
@@ -36,7 +36,7 @@ if current_iter>max_iter*(0.95)
     I=1+1000000*(current_iter/max_iter)*sin((pi*current_iter*rand())/(2*max_iter))+0.5*1000000*(current_iter/max_iter);
 end
 
-% Dicrease boundaries to converge towards antlion Ë«Ã¸±ß½çÏò°²ÌØÀû°º·½ÏòÊÕÁ²
+% Dicrease boundaries to converge towards antlion 
 lb=lb/(I); % Equation (2.10) in the paper
 ub=ub/(I); % Equation (2.11) in the paper
 
@@ -54,9 +54,7 @@ else
     ub=-ub+antlion;
 end
 
-% This function creates n random walks and normalize accroding to lb and ub
-% ¸Ãº¯Êý´´½¨n¸öËæ»úÓÎ¶¯£¬²¢¸ù¾ÝlbºÍub½øÐÐ¹æ·¶»¯
-% vectors 
+
 for i=1:Dim 
     X = [0 cumsum(2*(rand(max_iter,1)>0.5)-1)']; % Equation (2.1) in the paper
   
@@ -67,7 +65,7 @@ for i=1:Dim
     b=max(X);
     c=lb(i);
     d=ub(i);      
-    X_norm=((X-a).*(d-c))./(b-a)+c; % Equation (2.7) in the paper ÕâÀï¸Älevy·ÉÐÐ£¿
+    X_norm=((X-a).*(d-c))./(b-a)+c; % Equation (2.7) in the paper è¿™é‡Œæ”¹levyé£žè¡Œï¼Ÿ
     RWs(:,i)=X_norm;
 end
 
