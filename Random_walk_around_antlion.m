@@ -1,5 +1,5 @@
 
-% This function creates random walks 
+
 
 function [RWs]=Random_walk_around_antlion(Dim,max_iter,lb, ub,antlion,current_iter)
 if size(lb,1) ==1 && size(lb,2)==1 %Check if the bounds are scalar 
@@ -13,7 +13,7 @@ if size(lb,1) > size(lb,2) %Check if boundary vectors are horizontal or vertical
 end
 
 I=1;
-; % I is the ratio in Equations (2.10) and (2.11)
+
 
 if current_iter>max_iter/10
     I=1+100*(current_iter/max_iter)*sin((pi*current_iter*rand())/(2*max_iter))+0.5*100*(current_iter/max_iter);
@@ -36,27 +36,27 @@ if current_iter>max_iter*(0.95)
     I=1+1000000*(current_iter/max_iter)*sin((pi*current_iter*rand())/(2*max_iter))+0.5*1000000*(current_iter/max_iter);
 end
 
-% Dicrease boundaries to converge towards antlion 
-lb=lb/(I); % Equation (2.10) in the paper
-ub=ub/(I); % Equation (2.11) in the paper
 
-% Move the interval of [lb ub] around the antlion [lb+anlion ub+antlion]
+lb=lb/(I); 
+ub=ub/(I); 
+
+
 
 if rand<0.5
-    lb=lb+antlion; % Equation (2.8) in the paper
+    lb=lb+antlion; 
 else
     lb=-lb+antlion;
 end
 
 if rand>=0.5
-    ub=ub+antlion; % Equation (2.9) in the paper
+    ub=ub+antlion; 
 else
     ub=-ub+antlion;
 end
 
 
 for i=1:Dim 
-    X = [0 cumsum(2*(rand(max_iter,1)>0.5)-1)']; % Equation (2.1) in the paper
+    X = [0 cumsum(2*(rand(max_iter,1)>0.5)-1)']; 
   
      X=X+rand*(max(X)-X);
  
@@ -65,7 +65,7 @@ for i=1:Dim
     b=max(X);
     c=lb(i);
     d=ub(i);      
-    X_norm=((X-a).*(d-c))./(b-a)+c; % Equation (2.7) in the paper 这里改levy飞行？
+    X_norm=((X-a).*(d-c))./(b-a)+c; 
     RWs(:,i)=X_norm;
 end
 
