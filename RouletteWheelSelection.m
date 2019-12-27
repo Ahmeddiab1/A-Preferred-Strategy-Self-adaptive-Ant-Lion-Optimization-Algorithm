@@ -1,6 +1,6 @@
 
 function choice = RouletteWheelSelection(weights)
-  A = sort(weights);%…˝–Ú≈≈¡–
+  A = sort(weights);
    B=mean(A); 
    C=[];
   for i=1:length(A)
