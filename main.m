@@ -1,11 +1,11 @@
 clear all 
 clc
 
-SearchAgents_no=40; % Numbe1 of search agents
+SearchAgents_no=40; 
 
-Function_name='F1'; % Name of the test function that can be from F1 to F23 (Table 1,2,3 in the paper)
+Function_name='F1';
 
-Max_iteration=500; % Maximum numbef of iterations
+Max_iteration=500; 
 
 % Load details of the selected benchmark funcion
 [lb,ub,dim,fobj]=Get_Functions_details(Function_name);
@@ -20,8 +20,8 @@ Max_iteration=500; % Maximum numbef of iterations
 
 semilogy(cg_curve,'Color','r')
 
-xlabel('´úÊý');
-ylabel('½â');
+xlabel('Â´ÃºÃŠÃ½');
+ylabel('Â½Ã¢');
     
 hold on
 
