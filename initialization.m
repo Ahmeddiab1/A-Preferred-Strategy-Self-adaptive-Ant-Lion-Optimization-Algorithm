@@ -4,8 +4,7 @@ function X=initialization(SearchAgents_no,dim,ub,lb)
 
 Boundary_no= size(ub,2); % numnber of boundaries
 
-% If the boundaries of all variables are equal and user enter a signle
-% number for both ub and lb
+
 if Boundary_no==1
     X=rand(SearchAgents_no,dim).*(ub-lb)+lb;
 end
